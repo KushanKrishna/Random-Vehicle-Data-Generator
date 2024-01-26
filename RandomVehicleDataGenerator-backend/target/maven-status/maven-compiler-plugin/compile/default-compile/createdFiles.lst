@@ -1,0 +1,12 @@
+com\tsystems\SyntheticVehicleDataGenerator\serviceImpl\VehicleServiceImpl.class
+com\tsystems\SyntheticVehicleDataGenerator\model\OwnershipRecord.class
+com\tsystems\SyntheticVehicleDataGenerator\service\VehicleService.class
+com\tsystems\SyntheticVehicleDataGenerator\model\ServiceHistory.class
+com\tsystems\SyntheticVehicleDataGenerator\model\Address.class
+com\tsystems\SyntheticVehicleDataGenerator\model\WarrantyInformation.class
+com\tsystems\SyntheticVehicleDataGenerator\util\SyntheticData.class
+com\tsystems\SyntheticVehicleDataGenerator\model\VehicleData.class
+com\tsystems\SyntheticVehicleDataGenerator\controller\SVDGController.class
+com\tsystems\SyntheticVehicleDataGenerator\util\VehicleDataUtilMethods.class
+com\tsystems\SyntheticVehicleDataGenerator\model\DealerInformation.class
+com\tsystems\SyntheticVehicleDataGenerator\SyntheticVehicleDataGeneratorApplication.class
