@@ -5,9 +5,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class RandomVehicleDataGeneratorApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
 }

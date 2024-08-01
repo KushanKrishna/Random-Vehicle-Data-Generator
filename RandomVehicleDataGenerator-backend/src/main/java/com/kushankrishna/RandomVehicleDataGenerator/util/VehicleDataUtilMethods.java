@@ -5,7 +5,6 @@ import com.kushankrishna.RandomVehicleDataGenerator.model.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class VehicleDataUtilMethods {
     Random rnd = new Random();
@@ -47,21 +46,15 @@ public class VehicleDataUtilMethods {
         return SyntheticData.lastNames[rnd.nextInt(SyntheticData.lastNames.length)];
     }
 
-    //generate random color
-    public String getColor() {
-        return SyntheticData.colors[rnd.nextInt(SyntheticData.colors.length)];
-    }
-
     //generate random addresss
     public Address getAddress() {
         Address address = new Address();
         address.setBuilding(SyntheticData.buildings[rnd.nextInt(SyntheticData.buildings.length)]);
         int temp = rnd.nextInt(SyntheticData.cities.length);
-        address.setCity(SyntheticData.cities[temp]);
-        address.setState(SyntheticData.states[temp]);
+        address.setCity(SyntheticData.cities[temp].trim());
+        address.setState(SyntheticData.states[temp].trim());
         address.setCountry("India");
         address.setStreet(SyntheticData.streets[rnd.nextInt(SyntheticData.streets.length)]);
-        address.setCountry("India");
         address.setPin(SyntheticData.pins[rnd.nextInt(SyntheticData.pins.length)]);
         return address;
     }
@@ -82,7 +75,7 @@ public class VehicleDataUtilMethods {
         VehicleDataUtilMethods dataUtil = new VehicleDataUtilMethods();
         List<LocalDate> dateList = new LinkedList<>();
         for (int j = 0; j < noOfOwners + 1; j++) {
-            int day = 1;
+            int day;
             int month = 1 + rnd.nextInt(12);
             int year = 2016 + rnd.nextInt(8);
             if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
@@ -182,8 +175,6 @@ public class VehicleDataUtilMethods {
 
     public Double priceGenerator(VehicleData data) {
         String brand = data.getBrand();
-        double minPrice = 600000.0;
-        double maxPrice = 8000000.0;
         if (brand.equals("Land Rover") || brand.equals("Porsche") || brand.equals("Lamborghini") || brand.equals("Ferrari") || brand.equals("Rolls-Royce") || brand.equals("Aston Martin")
                 || brand.equals("Bentley") || brand.equals("Jeep") || brand.equals("Mercedes-Benz") || brand.equals("BMW") || brand.equals("Audi") || brand.equals("Jaguar")) {
             String str = rnd.nextInt(40) + 40 + "00000";
@@ -206,14 +197,6 @@ public class VehicleDataUtilMethods {
 
     }
 
-    public String vehicleTypeGenerator() {
-        return SyntheticData.vehilceType[rnd.nextInt(SyntheticData.vehilceType.length)];
-    }
-
-    public String vehicleTransmissionTypeGenerator() {
-        return SyntheticData.trasmissionType[rnd.nextInt(SyntheticData.trasmissionType.length)];
-    }
-
     public List<ServiceHistory> serviceHistoryGenerator(VehicleData data) {
         LocalDate purchaseDate = data.getOwnershipHistory().get(0).getPurchaseDate();
         int pYear = data.getOwnershipHistory().get(0).getPurchaseDate().getYear();
@@ -224,7 +207,7 @@ public class VehicleDataUtilMethods {
             return list;
         } else {
             for (int j = 0; j < 10; j++) {
-                int day = 1;
+                int day;
                 int month = 1 + rnd.nextInt(12);
                 int sYear = pYear + rnd.nextInt(LocalDate.now().getYear() - pYear) + 1;
 
@@ -248,11 +231,11 @@ public class VehicleDataUtilMethods {
                 list.add(serviceHistory);
             }
         }
-        if(list.isEmpty()) {
+        if (list.isEmpty()) {
             System.out.println("Service list was empty, recalling the serviceHistoryGenerator method");
-           return serviceHistoryGenerator(data);
+            return serviceHistoryGenerator(data);
         }
-            return list;
+        return list;
 
     }
 
@@ -260,18 +243,12 @@ public class VehicleDataUtilMethods {
         String response;
         int noOfOwners = data.getOwnershipHistory().size();
         switch (noOfOwners) {
-            case 1: {
-                response = "First hand";
-                break;
-            }
-            case 2: {
-                response = "Used";
-                break;
-            }
-            default: {
-                response = "Certified pre-owned";
-                break;
-            }
+            case 1 -> response = "First hand";
+
+            case 2 -> response = "Used";
+
+            default -> response = "Certified pre-owned";
+
         }
         return response;
     }
@@ -284,21 +261,21 @@ public class VehicleDataUtilMethods {
             for (int i = 0; i < noOfFeatures; i++) {
                 features.add(SyntheticData.featuresAndOptions[rnd.nextInt(SyntheticData.featuresAndOptions.length)]);
             }
-            return features.stream().collect(Collectors.toList());
+            return new ArrayList<>(features);
         } else if (price > 1000000.0 && price <= 2500000.0) {
             int noOfFeatures = rnd.nextInt(3) + 3;
             Set<String> features = new HashSet<>();
             for (int i = 0; i < noOfFeatures; i++) {
                 features.add(SyntheticData.featuresAndOptions[rnd.nextInt(SyntheticData.featuresAndOptions.length)]);
             }
-            return features.stream().collect(Collectors.toList());
+            return new ArrayList<>(features);
         } else {
             int noOfFeatures = rnd.nextInt(3) + 6;
             Set<String> features = new HashSet<>();
             for (int i = 0; i < noOfFeatures; i++) {
                 features.add(SyntheticData.featuresAndOptions[rnd.nextInt(SyntheticData.featuresAndOptions.length)]);
             }
-            return features.stream().collect(Collectors.toList());
+            return new ArrayList<>(features);
         }
     }
 }

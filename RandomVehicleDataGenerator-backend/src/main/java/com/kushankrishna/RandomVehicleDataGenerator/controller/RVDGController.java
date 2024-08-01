@@ -13,9 +13,9 @@ public class RVDGController {
     VehicleService vehicleService;
 
     @GetMapping("/vehicle/{limit}")
-    public ResponseEntity<?> getVehicleData(@PathVariable("limit") int limit) throws InterruptedException {
+    public ResponseEntity<?> getVehicleData(@PathVariable("limit") int limit) {
         if (limit < 0) {
-            return ResponseEntity.status(200).body(null);
+            return ResponseEntity.badRequest().build();
         }
         System.out.println("Get api called with value: "+limit);    
         return ResponseEntity.status(200).body(this.vehicleService.getGeneratedData(limit));

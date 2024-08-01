@@ -1,1 +1,5 @@
-com\tsystems\SyntheticVehicleDataGenerator\SyntheticVehicleDataGeneratorApplicationTests.class
+com\kushankrishna\RandomVehicleDataGenerator\util\VehicleUtilMethodTest.class
+com\kushankrishna\RandomVehicleDataGenerator\service\VehicleServiceImplTest.class
+com\kushankrishna\RandomVehicleDataGenerator\util\TestUtils.class
+com\kushankrishna\RandomVehicleDataGenerator\controller\RVDGControllerTest.class
+com\kushankrishna\RandomVehicleDataGenerator\RandomVehicleDataGeneratorApplicationTests.class
