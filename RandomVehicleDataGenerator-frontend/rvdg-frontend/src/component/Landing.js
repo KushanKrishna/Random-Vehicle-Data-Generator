@@ -10,6 +10,7 @@ const Landing = () => {
     const [Alldata, setAlldata] = useState([]);
     const [buttonClick, setButtonClicked] = useState(false);
     const notify = () => toast.warn("Please enter input in numbers only!");
+    const BASE_URL = 'https://random-vehicle-data-generator-production.up.railway.app'
   
     const handleChange = (e) => {
         let value = e.target.value;
@@ -24,7 +25,7 @@ const Landing = () => {
     }; 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get('http://localhost:8080/api/vehicle/' + numofdata).then((response)=>{ 
+            const res = await axios.get(BASE_URL+'/api/vehicle/' + numofdata).then((response)=>{ 
                 setAlldata(response.data); 
             }).catch((e)=>{console.log(e);
                 notify();
