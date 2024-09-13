@@ -1,4 +1,4 @@
-# Created at 2024-07-22T16:00:18.495
+# Created at 2024-09-13T14:16:43.999
 Boot Manifest-JAR contains absolute paths in classpath 'E:\Workspace\RandomVehicleDataGenerator\RandomVehicleDataGenerator-backend\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root
